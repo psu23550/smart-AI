@@ -37,10 +37,12 @@
         </q-btn>
         
         <div class="q-pa-4" style="max-width: 350 px">
+        <q-btn color="secondary">
+
           <q-list>
-            <q-expansion-item color expand-separator label="พฤติกรรมการเเสดงออกเเละการตอบสนอง">
+            <q-expansion-item color="secondary" expand-separator label="พฤติกรรมการเเสดงออกเเละการตอบสนอง">
               <div class="column">
-                <q-btn color="yellow">
+                <q-btn color="secondary">
                   <router-link to="/tie" class="d">พฤติกรรมหิว</router-link>
                 </q-btn>
                 <q-btn color="secondary">
@@ -72,6 +74,8 @@
               </div>
             </q-expansion-item>
           </q-list>
+        </q-btn>
+
         </div>
                 <q-btn color="secondary">
                   <router-link to="/9" class="d">บรรณานุกรม</router-link>
@@ -165,5 +169,7 @@ text-align: center;
 text-align: center;
 }
 
-
+.q-btn{
+  margin: 5px
+}
 </style>

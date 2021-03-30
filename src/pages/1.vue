@@ -1,5 +1,5 @@
 <template>
-  <div class="q-mt-xl">
+  <div class="bg q-mt-xl">
     <p>1</p>
   </div>
 </template>
@@ -8,4 +8,9 @@
 export default {};
 </script>
 
-<style scoped></style>
+<style scoped>
+.bg{
+  background-color: aqua;
+  height: 100px;
+}
+</style>

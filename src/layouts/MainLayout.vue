@@ -129,8 +129,7 @@ export default {
 
 .content {
   height: 100%;
-  background-image: url("~assets/download.jpg");
-
+  /* background-image: url("~assets/download.jpg"); */
 }
 
 .btn1 {

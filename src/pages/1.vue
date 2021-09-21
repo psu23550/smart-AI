@@ -1,31 +1,108 @@
 <template>
-  <div class="page q-mt-xl">
-    <div>
-      <h5>{{ datas.data.info1.title }}</h5>
-      <p>{{ datas.data.info1.data }}</p>
-    </div>
-    <div>
-      <h5>{{ datas.data.info2.title }}</h5>
-      <p>{{ datas.data.info2.data }}</p>
+  <div class="page">
+    <div class="q-mt-xl">
+      <p class="q-pl-xl title">ความผูกพันกับบุตรคืออะไร</p>
+      <p class="q-px-lg">
+        “ความผูกพันกับบุตร” คือ พฤติกรรมของมารดาที่แสดงความรักใคร่ ผูกพัน
+        การเอาใจใส่ เสียสละที่มีต่อบุตร เกิดขึ้นทีละเล็กละน้อย
+        ตั้งแต่ระยะตั้งครรภ์ และ ระยะคลอด และระยะหลังคลอด
+        ความผูกพันระหว่างมารดากับบุตรมีความคงทนถาวร
+        มีผลต่อความอยู่รอดและพัฒนาการของบุตร
+      </p>
+      <div class="img-fluid rounded-pill">
+        <div class="row justify-center">
+          <img class="" src="~/assets/baby.jpg" />
+        </div>
+      </div>
+      <div class="q-pl-xl title">
+        การสร้างความผูกพันกับบุตรต้องทำอย่างไร
+      </div>
+      <div class="text-p">
+        <ol>
+          <li>
+            <p>หาสถานที่ฝากครรภ์และคลอดที่ปลอดภัย</p>
+          </li>
+          <li>
+            <p>ฝากครรภ์จากสถานพยาบาลอย่างน้อย 4 ครั้งและมาตรวจครรภ์ตามนัด</p>
+          </li>
+          <li>
+            <p>หาความรู้เกี่ยวกับบุตรแรกเกิดและพฤติกรรมที่บุตรแสดงออก</p>
+          </li>
+          <li><p>ตั้งชื่อ เรียกชื่อบุตร</p></li>
+          <li>
+            <p>
+              นับและบันทึกการดิ้นของบุตรทุกวัน นับผลรวมของจำนวนการดิ้นของบุตรใน
+              3 เวลาหลังรับประทานอาหารถ้าผลการนับพบว่าน้อยกว่า 10 ครั้งต่อ 12
+              ชั่วโมง ให้รีบมาโรงพยาบาลเพื่อประเมินสุขภาพบุตรในครรภ์ต่อไป
+            </p>
+          </li>
+          <li><p>ลูบหน้าท้องของมารดาเมื่อบุตรในท้องดิ้น</p></li>
+          <li>
+            <p>
+              ลูบคลำส่วนต่างๆ ของบุตรผ่านหน้าท้อง เช่น
+              เลือกห้องที่เก็บเสียงไม่รบกวน ควรทำหลังอาหารเย็นอย่างน้อย 1
+              ครั้งจนถึงคลอด
+            </p>
+          </li>
+        </ol>
+      </div>
+      <div class="text-p">
+        <table>
+          <tr>
+            <th>ความสำคัญต่อบุตร</th>
+            <th>ความสำคัญต่อมารดา</th>
+          </tr>
+          <tr>
+            <td>
+              ทำให้บุตรมีการเจริญเติบโตและพัฒนาการด้านร่างกาย จิตใจอารมณ์
+              และสติปัญญาที่ดี
+            </td>
+            <td>
+              <ol>
+                <li>มีความรักใคร่ ผูกพันต่อบุตรมากขึ้น</li>
+                <li>มีความสนใจต่อภาวะสุขภาพของบุตรในครรภ์</li>
+                <li>
+                  มีความสนใจที่จะกระตุ้นพัฒนาการของบุตรในครรภ์ด้วยการลูบหรือสัมผัสบุตรผ่านทางหน้าท้อง
+                </li>
+              </ol>
+            </td>
+          </tr>
+          <tr></tr>
+        </table>
+      </div>
     </div>
   </div>
 </template>
 
-<script>
-export default {
-  name: "page1",
-  data() {
-    return {
-      datas: {},
-    };
-  },
-  async mounted() {
-    let fetchData = await this.$store.dispatch("getData");
-    this.datas = await fetchData.filter((dt) => dt.id === "page1")[0];
-    console.log(this.datas);
-  },
-};
-</script>
-
 <style scoped>
+.page {
+  /* background-color: red; */
+  display: relative;
+}
+.q-pl-xl {
+  margin: 12px;
+}
+.head-5 {
+  padding: 0px;
+}
+.title {
+  font-size: 28px;
+  font-weight: bold;
+  margin-left: 12px;
+}
+.text-p {
+  padding-left: 55px;
+}
+.colum {
+  display: flex;
+  justify-content: space-between;
+  padding: 50px;
+}
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+  padding-top: 8px;
+}
 </style>

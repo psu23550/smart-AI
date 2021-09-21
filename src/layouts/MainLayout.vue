@@ -1,92 +1,129 @@
 <template>
-<div class="content">
-  <q-layout view="hHh lpR fFf">
-    <q-header elevated class="header bg-primary text-black">
-      <q-toolbar>
-        <q-btn dense flat round icon="menu" @click="left = !left" />
-        <q-toolbar-title class="row">
-          <router-link to="/"><img class="photo" src="~assets/logo.jpg" /></router-link>
-          <p class="title">Smart AI Teaching for Nursing care of Midwifery</p>
-        </q-toolbar-title>
-      </q-toolbar>
-    </q-header>
+  <div class="content">
+    <q-layout view="hHh lpR fFf">
+      <q-header elevated class="header bg-teal-6 text-black">
+        <q-toolbar>
+          <q-btn dense flat round icon="menu" @click="left = !left" />
+          <q-toolbar-title class="row">
+            <router-link to="/index"
+              ><img class="photo" src="~assets/logo.jpg"
+            /></router-link>
+            <p class="title">Smart AI Teaching for Nursing care of Midwifery</p>
+          </q-toolbar-title>
+        </q-toolbar>
+      </q-header>
 
-    <q-drawer content-class="bg-red text-white" v-model="left" side="left" bordered>
-      <div class="column">
-        <div class="q-pa-lg"></div>
-        <q-btn color="secondary">
-          <router-link to="/1" class="text-right">ความผูกพันธ์กับบุตร</router-link>
-        </q-btn>
-        <q-btn color="secondary">
-          <router-link to="/2" class="text-right">การเลี้ยงลูกด้วยนมคุณเเม่</router-link>
-        </q-btn>
-        <q-btn color="secondary">
-          <router-link to="/3" class="text-right">การอุ้มบุตร</router-link>
-        </q-btn>
-        <q-btn color="secondary">
-          <router-link to="/4" class="text-right">การอาบน่้าบุตร</router-link>
-        </q-btn>
-        <q-btn color="secondary">
-          <router-link to="/5" class="text-right">การดูเเลสะดือเเละการทำความสะอาดสะดื้อ</router-link>
-        </q-btn>
-        <q-btn color="secondary">
-          <router-link to="/6" class="text-right">การดูเเลการขับถ่าย</router-link>
-        </q-btn>
-        <q-btn color="secondary">
-          <router-link to="/7" class="text-right">อาการผิดปกติของบุตร</router-link>
-        </q-btn>
-        
-        <div class="q-pa-4" style="max-width: 350 px">
-        <q-btn color="secondary">
+      <q-drawer
+        content-class="bg-teal-2 drawer text-white"
+        show-if-above
+        v-model="left"
+        side="left"
+        bordered
+      >
+        <div class="column">
+          <div class="q-pa-lg"></div>
+          <q-btn color="secondary">
+            <router-link to="/1" class="text-right"
+              >ความผูกพันธ์กับบุตร</router-link
+            >
+          </q-btn>
+          <q-btn color="secondary">
+            <router-link to="/2" class="text-right"
+              >การเลี้ยงลูกด้วยนมคุณเเม่</router-link
+            >
+          </q-btn>
+          <q-btn color="secondary">
+            <router-link to="/3" class="text-right">การอุ้มบุตร</router-link>
+          </q-btn>
+          <q-btn color="secondary">
+            <router-link to="/4" class="text-right">การอาบน่้าบุตร</router-link>
+          </q-btn>
+          <q-btn color="secondary">
+            <router-link to="/5" class="text-right"
+              >การดูเเลสะดือเเละการทำความสะอาดสะดื้อ</router-link
+            >
+          </q-btn>
+          <q-btn color="secondary">
+            <router-link to="/6" class="text-right"
+              >การดูเเลการขับถ่าย</router-link
+            >
+          </q-btn>
+          <q-btn color="secondary">
+            <router-link to="/7" class="text-right"
+              >อาการผิดปกติของบุตร</router-link
+            >
+          </q-btn>
 
-          <q-list>
-            <q-expansion-item color="secondary" expand-separator label="พฤติกรรมการเเสดงออกเเละการตอบสนอง">
-              <div class="column">
-                <q-btn color="secondary">
-                  <router-link to="/tie" class="d">พฤติกรรมหิว</router-link>
-                </q-btn>
-                <q-btn color="secondary">
-                  <router-link to="/tie" class="d">พฤติกรรมอิ่ม</router-link>
-                </q-btn>
+          <div class="q-pa-4" style="max-width: 350 px">
+            <q-btn color="secondary">
+              <q-list>
+                <q-expansion-item
+                  color="secondary"
+                  expand-separator
+                  label="พฤติกรรมการเเสดงออกเเละการตอบสนอง"
+                >
+                  <div class="column">
+                    <q-btn color="secondary">
+                      <router-link to="/tie" class="d">พฤติกรรมหิว</router-link>
+                    </q-btn>
+                    <q-btn color="secondary">
+                      <router-link to="/tie" class="d"
+                        >พฤติกรรมอิ่ม</router-link
+                      >
+                    </q-btn>
 
-                <q-btn color="secondary">
-                  <router-link to="/tie" class="d">พฤติกรรมระยะง่วง</router-link>
-                </q-btn>
-                <q-btn color="secondary">
-                  <router-link to="/tie" class="d">พฤติกรรมในระยะหลับลึก</router-link>
-                </q-btn>
-                <q-btn color="secondary">
-                  <router-link to="/tie" class="d">พฤติกรรมในระยะหลับตืน</router-link>
-                </q-btn>
-                <q-btn color="secondary">
-                  <router-link to="/tie" class="d">พฤติกรรมในระยะตื่นสงบ</router-link>
-                </q-btn>
-                <q-btn color="secondary">
-                  <router-link to="/tie" class="d">พฤติกรรมในระยะตื่นเต็มที่</router-link>
-                </q-btn>
-                <q-btn color="secondary">
-                  <router-link to="/tie" class="d">พฤติกรรมในระยะร้องไห้</router-link>
-                </q-btn>
-                <q-btn color="secondary">
-                  <router-link to="/tie" class="d">พฤติกรรมความต้องการเล่นหรือพูดคุย</router-link>
-                </q-btn>
-                
-              </div>
-            </q-expansion-item>
-          </q-list>
-        </q-btn>
-
+                    <q-btn color="secondary">
+                      <router-link to="/tie" class="d"
+                        >พฤติกรรมระยะง่วง</router-link
+                      >
+                    </q-btn>
+                    <q-btn color="secondary">
+                      <router-link to="/tie" class="d"
+                        >พฤติกรรมในระยะหลับลึก</router-link
+                      >
+                    </q-btn>
+                    <q-btn color="secondary">
+                      <router-link to="/tie" class="d"
+                        >พฤติกรรมในระยะหลับตืน</router-link
+                      >
+                    </q-btn>
+                    <q-btn color="secondary">
+                      <router-link to="/tie" class="d"
+                        >พฤติกรรมในระยะตื่นสงบ</router-link
+                      >
+                    </q-btn>
+                    <q-btn color="secondary">
+                      <router-link to="/tie" class="d"
+                        >พฤติกรรมในระยะตื่นเต็มที่</router-link
+                      >
+                    </q-btn>
+                    <q-btn color="secondary">
+                      <router-link to="/tie" class="d"
+                        >พฤติกรรมในระยะร้องไห้</router-link
+                      >
+                    </q-btn>
+                    <q-btn color="secondary">
+                      <router-link to="/tie" class="d"
+                        >พฤติกรรมความต้องการเล่นหรือพูดคุย</router-link
+                      >
+                    </q-btn>
+                  </div>
+                </q-expansion-item>
+              </q-list>
+            </q-btn>
+          </div>
+          <q-btn color="secondary">
+            <router-link to="/9" class="d">บรรณานุกรม</router-link>
+          </q-btn>
+          <div class="Barcode">
+            <img src="~/assets/barcode.jpg" width="120px" height="120px"/>
+          </div>
         </div>
-                <q-btn color="secondary">
-                  <router-link to="/9" class="d">บรรณานุกรม</router-link>
-                </q-btn>
-      </div>
-    </q-drawer>
-
-    <q-page-container>
-      <router-view />
-    </q-page-container>
-  </q-layout>
+      </q-drawer>
+      <q-page-container>
+        <router-view />
+      </q-page-container>
+    </q-layout>
   </div>
 </template>
 
@@ -95,19 +132,18 @@ export default {
   methods: {
     onItemClick() {
       // console.log('Clicked on an Item')
-    },
+    }
   },
   data() {
     return {
-      left: false,
+      left: false
     };
-  },
+  }
 };
 </script>
 
 <style scoped>
 .header {
-  margin-top: 20px;
   height: 80px;
 }
 
@@ -160,15 +196,24 @@ export default {
 .column {
   margin-left: 10px;
   margin-right: 10px;
+  margin-top: -20px;
 }
-.q-link{
-text-align: center;
+.q-link {
+  text-align: center;
 }
-.cursor-pointer{
-text-align: center;
+.cursor-pointer {
+  text-align: center;
 }
 
-.q-btn{
-  margin: 5px
+.q-btn {
+  margin: 5px;
+}
+
+.drawer {
+  position: fixed;
+}
+.Barcode {
+  margin-top: 20px;
+  margin-left: 80px;
 }
 </style>

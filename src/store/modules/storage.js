@@ -29,6 +29,18 @@ const actions = {
             dataList.push(data);
         });
         return dataList
+    },
+    async getDataExam({ commit }) {
+        let dataList = [];
+        const information = await db.collection("Exam").get();
+        await information.forEach((doc) => {
+            let data = {
+                id: doc.id,
+                data: doc.data(),
+            };
+            dataList.push(data);
+        });
+        return dataList
     }
 }
 

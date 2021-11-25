@@ -113,7 +113,7 @@
             </q-btn>
           </div>
           <q-btn color="secondary">
-            <router-link to="/9" class="d">บรรณานุกรม</router-link>
+            <router-link to="/9" class="d">แบบทดสอบ</router-link>
           </q-btn>
           <div class="Barcode">
             <img src="~/assets/barcode.jpg" width="120px" height="120px"/>

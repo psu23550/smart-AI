@@ -1,60 +1,57 @@
 <template>
   <div class="q-mt-xl">
-    <p class="q-pl-xl text-h4 q-mb-xl">แบบทดสอบ</p>
-    <div class="q-pl-xl ans">
-      <div v-for="(item, index) in datas" v-bind:key="item.id">
-        <p class="text-h5">{{ index + 1 }}.{{ item["data"]["question"] }}</p>
-        <div class="q-gutter-sm column">
-          <q-radio
-            v-model="answer[index]"
-            @input="checkAnswer(index)"
-            val="a"
-            :label="item['data']['choices']['a']"
-          />
-          <q-radio
-            v-model="answer[index]"
-            @input="checkAnswer(index)"
-            val="b"
-            :label="item['data']['choices']['b']"
-          />
-          <q-radio
-            v-model="answer[index]"
-            @input="checkAnswer(index)"
-            val="c"
-            :label="item['data']['choices']['c']"
-          />
-          <q-radio
-            v-model="answer[index]"
-            @input="checkAnswer(index)"
-            val="d"
-            :label="item['data']['choices']['d']"
-          />
+    <div class="flex justify-center" v-if="!authen">
+      <q-btn rounded class="btn" @click="googleSignIn()">เข้าสู่ระบบด้วย Google</q-btn>
+    </div>
+    <div v-else>
+      <p class="q-pl-xl text-h4 q-mb-xl">แบบทดสอบ</p>
+      <div class="q-pl-xl ans">
+        <q-spinner v-if="loading" color="primary" size="3em" />
+        <div v-else v-for="(item, index) in datas" v-bind:key="item.id">
+          <p class="text-h5">{{ index + 1 }}.{{ item["data"]["question"] }}</p>
+          <div class="q-gutter-sm column">
+            <q-radio v-model="answer[index]" @input="checkAnswer(index)" val="a"
+              :label="item['data']['choices']['a']" />
+            <q-radio v-model="answer[index]" @input="checkAnswer(index)" val="b"
+              :label="item['data']['choices']['b']" />
+            <q-radio v-model="answer[index]" @input="checkAnswer(index)" val="c"
+              :label="item['data']['choices']['c']" />
+            <q-radio v-model="answer[index]" @input="checkAnswer(index)" val="d"
+              :label="item['data']['choices']['d']" />
+          </div>
+          <div class="ans-card" :class="answerClass[index]" v-if="answer[index]">
+            <p>ผลลัพธ์: {{ isCorrect[index] == true ? "ถูก" : "ผิด" }}</p>
+            <p v-if="isCorrect[index] == false">
+              {{ item["data"]["choices"][item.data.answer] }}
+            </p>
+          </div>
+          <br />
         </div>
-        <div class="ans-card" :class="answerClass[index]" v-if="answer[index]">
-          <p>ผลลัพธ์: {{ isCorrect[index] == true ? "ถูก" : "ผิด" }}</p>
-          <p v-if="isCorrect[index] == false">
-            {{ item["data"]["choices"][item.data.answer] }}
-          </p>
-        </div>
-        <br />
+        <q-btn rounded class="btn q-mb-xl" @click="signOut()">ออกจากระบบ</q-btn>
       </div>
     </div>
+
   </div>
 </template>
 
 <script>
+import firebase from "firebase";
 export default {
   data() {
     return {
       datas: [],
       answer: [],
       isCorrect: [],
-      answerClass: []
+      answerClass: [],
+      loading: false,
+      authen: false
     };
   },
   async mounted() {
+    this.loading = true;
     const fectData = await this.$store.dispatch("getDataExam");
     this.datas.push(...fectData);
+    this.loading = false;
     // console.log("this.datas", this.datas);
   },
   methods: {
@@ -69,27 +66,56 @@ export default {
         this.answerClass[index] = "wrong-ans";
       }
       console.log("this.isCorrect", this.isCorrect);
+    },
+    async googleSignIn() {
+      let provider = new firebase.auth.GoogleAuthProvider();
+      firebase
+        .auth()
+        .signInWithPopup(provider)
+        .then((result) => {
+          let token = result.credential.accessToken;
+          let user = result.user;
+          // console.log("token", token) // Token
+          // console.log("user", user.email) // User that was authenticated
+          if (user.email) {
+            this.authen = true;
+          }
+        })
+        .catch((err) => {
+          console.log(err); // This will give you all the information needed to further debug any errors
+        });
+    },
+    async signOut() {
+      this.authen = false;
     }
   }
 };
 </script>
 
 <style scoped>
-@import url("https://fonts.googleapis.com/css2?family=Prompt:wght@500&display=swap");
 p {
   font-family: "Prompt", sans-serif;
 }
+
 .ans {
   font-family: "Prompt", sans-serif;
 }
+
+.btn {
+  font-family: "Prompt", sans-serif;
+  padding: 10px;
+}
+
 .ans-card {
   padding: 10px;
   border-radius: 10px;
   color: white;
 }
+
 .wrong-ans {
   background-color: salmon;
 }
+
 .correct-ans {
   background-color: rgb(20, 230, 125);
 }

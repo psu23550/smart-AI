@@ -89,6 +89,7 @@
   font-size: 28px;
   font-weight: bold;
   margin-left: 12px;
+  font-family: "Prompt", sans-serif;
 }
 .text-p {
   padding-left: 55px;
